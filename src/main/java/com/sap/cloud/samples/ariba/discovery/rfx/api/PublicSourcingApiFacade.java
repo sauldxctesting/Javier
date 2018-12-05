@@ -20,8 +20,10 @@ public class PublicSourcingApiFacade {
 
 	private static final String RETRIEVE_EVENTS_PATH = "/site/{0}/events/?rsqlfilter=(count=={1})";
 	private static final String ACKNOWLEDGE_EVENTS_PATH = "/action/site/{0}/events/{1}/acknowledge";
+	private static final String RETRIEVE_ATTACHMENT_PATH = "/site/{0}/events/{1}/attachmen/{2}";
 	private static final String DEBUG_ACKNOWLEDGING_EVENT_MESSAGE = "Acknowledging event [{}]...";
 	private static final String DEBUG_EVENT_ACKNOWLEDGED_MESSAGE = "Acknowledging event [{}] done.";
+	private static final String DEBUG_EVENT_ATTACH_MESSAGE = "Event Attach [{}] done.";
 	private static final String DEBUG_RETRIEVING_EVENTS_MESSAGE = "Retrieving [{}] events...";
 	private static final String DEBUG_EVENTS_RETRIEVED_MESSAGE = "Events retrieved: [{}]";
 	private static final String DEBUG_CALLING_MESSAGE = "Calling [{}]...";
@@ -169,4 +171,23 @@ public class PublicSourcingApiFacade {
 		logger.debug(DEBUG_EVENT_ACKNOWLEDGED_MESSAGE, eventId);
 	}
 
+	public void attachEvent(String eventId, String clId) throws UnsuccessfulOperationException {
+		logger.debug(DEBUG_EVENT_ATTACH_MESSAGE, eventId, clId);
+
+		String attachEventUrl = MessageFormat.format(RETRIEVE_ATTACHMENT_PATH, siteId, eventId, clId);
+		logger.debug(DEBUG_CALLING_MESSAGE, attachEventUrl);
+
+		try (CloseableHttpResponse attachEventResponse = openApisEndpoint.executeHttpGet(attachEventUrl)) {
+			int attachEventResponseStatusCode = HttpResponseUtils.validateHttpStatusResponse(attachEventResponse, HttpStatus.SC_OK);
+			logger.debug(DEBUG_CALLING_URI_RETURNED_STATUS_MESSAGE, attachEventUrl,
+					attachEventResponseStatusCode);
+		} catch (IOException | HttpResponseException e) {
+			String errorMessage = MessageFormat.format(ERROR_PROBLEM_OCCURED_WHILE_CALLING_MESSAGE,
+					attachEventUrl);
+			logger.error(errorMessage);
+			throw new UnsuccessfulOperationException(errorMessage, e);
+		}
+
+		logger.debug(DEBUG_EVENT_ATTACH_MESSAGE, eventId);
+	}
 }

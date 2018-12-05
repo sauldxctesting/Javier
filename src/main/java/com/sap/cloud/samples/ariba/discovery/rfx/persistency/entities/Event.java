@@ -54,6 +54,7 @@ public class Event implements Serializable {
 	private String referenceNumber;
 	private URL discoveryUrl;
 	private String statusCheckId;
+	private String cId;
 
 	/**
 	 * Default constructor
@@ -320,6 +321,13 @@ public class Event implements Serializable {
 	public void setStatusCheckId(String statusCheckId) {
 		this.statusCheckId = statusCheckId;
 	}
+	public String getCid() {
+		return statusCheckId;
+	}
+
+	public void setCid(String cId) {
+		this.cId = cId;
+	}
 
 	@Override
 	public String toString() {
@@ -328,6 +336,6 @@ public class Event implements Serializable {
 				+ ", opportunityAmt=" + opportunityAmt + ", responseDeadline=" + responseDeadline + ", description="
 				+ description + ", buyerName=" + buyerName + ", buyerAnid=" + buyerAnid + ", awardDate=" + awardDate
 				+ ", startDate=" + startDate + ", referenceNumber=" + referenceNumber + ", discoveryUrl=" + discoveryUrl
-				+ ", statusCheckId=" + statusCheckId + "]";
+				+ ", statusCheckId=" + statusCheckId +", cId=" + cId +"]";
 	}
 }

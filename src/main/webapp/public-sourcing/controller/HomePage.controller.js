@@ -39,6 +39,8 @@ sap.ui.define([ 'sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel',
 					oEvent.getSource().rerender();
 				},
 
+				
+				
 				handleLinkObjectAttributePress : function(oEvent) {
 					var sPath = oEvent.getSource().getParent()
 							.getBindingContext().sPath;
@@ -72,6 +74,8 @@ sap.ui.define([ 'sap/ui/core/mvc/Controller', 'sap/ui/model/json/JSONModel',
 					var aFilters = [];
 					aFilters.push(oFilter);
 					oBinding.filter(aFilters);
+					
+					
 				},
 
 				onRefreshPress : function(oEvent) {

@@ -1,5 +1,6 @@
 package com.sap.cloud.samples.ariba.discovery.rfx.daos;
 
+
 import java.util.List;
 
 import javax.persistence.TypedQuery;

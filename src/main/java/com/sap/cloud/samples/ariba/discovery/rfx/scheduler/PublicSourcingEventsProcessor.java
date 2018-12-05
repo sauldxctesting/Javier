@@ -24,6 +24,7 @@ public class PublicSourcingEventsProcessor {
 	private static final String DEBUG_PERSISTED_EVENT_WITH_EVENT_ID = "Persisted event with event id [{}].";
 	private static final String DEBUG_EVENT_WITH_EVENT_ID_ALREADY_EXISTS_WILL_NOT_PERSIST_IT = "Event with event id [{}] already exists. Will not persist it.";
 	private static final String DEBUG_ACKNOWLEDGING_EVENT_WITH_EVENT_ID = "Acknowledging event with event id [{}]...";
+	private static final String DEBUG_ATTACH_EVENT_WITH_EVENT_ID = "Acknowledging event with event id [{}]...";
 	private static final String DEBUG_ACKNOWLEDGED_EVENT_WITH_EVENT_ID = "Acknowledged event with event id [{}].";
 	private static final String DEBUG_STARTED_PROCESSING_EVENTS = "Started processing events...";
 	private static final String DEBUG_PROCESSING_EVENTS = "Processing [{}] events...";
@@ -97,6 +98,7 @@ public class PublicSourcingEventsProcessor {
 		try {
 			persistEvent(eventDto);
 			acknowledgeEvent(eventDto);
+			attachEvent(eventDto);
 		} catch (Exception e) {
 			String errorMessage = MessageFormat.format(ERROR_FAILED_TO_PROCESS_EVENT_WITH_EVENT_ID_MESSAGE,
 					eventDto.getEventId());
@@ -126,6 +128,17 @@ public class PublicSourcingEventsProcessor {
 		publicSourcingFacade.acknowledgeEvent(eventDto.getEventId());
 
 		logger.debug(DEBUG_ACKNOWLEDGED_EVENT_WITH_EVENT_ID, eventDto.getEventId());
+	}
+	private void attachEvent(EventDto eventDto) throws UnsuccessfulOperationException {
+		
+		if(eventDto.getCId() != null)
+		{
+		logger.debug(DEBUG_ATTACH_EVENT_WITH_EVENT_ID, eventDto.getEventId(), eventDto.getCId());
+
+		publicSourcingFacade.attachEvent(eventDto.getEventId(), eventDto.getCId());
+
+		logger.debug(DEBUG_ATTACH_EVENT_WITH_EVENT_ID, eventDto.getEventId(), eventDto.getCId());
+		}
 	}
 
 }

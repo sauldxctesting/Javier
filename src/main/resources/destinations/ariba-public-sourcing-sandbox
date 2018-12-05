@@ -1,7 +1,9 @@
-Type=HTTP
+#Exported connectivity destination
+#Fri Nov 30 13:54:41 CET 2018
 Name=ariba-public-sourcing
-URL=<SAP Ariba OpenAPIs Environment URL e.g. https://openapi.ariba.com/api/discoveryrfx/v1/sandbox>
-Authentication=NoAuthentication
+URL=https\://openapi.ariba.com/api/analytics-reporting-view/v1/sandbox
+Type=HTTP
 JobIntervalInSeconds=180
-SiteId=<The unique site ID. Enter random string when using sandbox environment>
-ApiKey=<SAP Ariba Open APIs application API key>
+ApiKey=RvByA9G8w7d4yqgZerRxTvKK4Jd8mUwK
+Authentication=NoAuthentication
+SiteId=test

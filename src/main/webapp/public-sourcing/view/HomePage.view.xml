@@ -40,8 +40,11 @@
 									<ObjectAttribute title="{i18n>opportunityValueObjectAttributeTitle}"
 										visible="{= ${visible} &amp;&amp; ${opportunityAmt/upperEnd} !== null}"
 										text="{opportunityAmt/lowerEnd/amount}{opportunityAmt/lowerEnd/currency} to {opportunityAmt/upperEnd/amount}{opportunityAmt/upperEnd/currency}" />
-									<ObjectAttribute text="{i18n>linkObjectAttributeText}"
+									<!--  <ObjectAttribute text="{i18n>linkObjectAttributeText}"
 										visible="{visible}" active="true" press="handleLinkObjectAttributePress" />
+										-->
+									<ObjectAttribute title="{i18n>file}"
+										visible="{visible}" text="{cId}" />
 								</attributes>
 							</ObjectListItem>
 						</items>

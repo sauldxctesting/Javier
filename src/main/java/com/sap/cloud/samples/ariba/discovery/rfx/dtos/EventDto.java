@@ -26,6 +26,7 @@ public class EventDto {
 	private URL discoveryURL;
 	private String awardDate;
 	private String statusCheckId;
+	private String cId;
 
 	public String getEventId() {
 		return eventId;
@@ -114,6 +115,15 @@ public class EventDto {
 	public void setDiscoveryURL(URL discoveryURL) {
 		this.discoveryURL = discoveryURL;
 	}
+	
+	public String getCId(){
+		return cId;
+	}
+	
+	public void setCId(String cId){
+		this.cId = cId;
+	}
+	
 
 	public OpportunityAmountDto getOpportunityAmt() {
 		return opportunityAmt;
