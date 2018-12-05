@@ -13,7 +13,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
 /**
  * Event entity.
  *
@@ -41,6 +40,7 @@ public class Event implements Serializable {
 
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<ProductCategory> productCategories;
+	private List<Attach> attachments;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private OpportunityAmt opportunityAmt;
@@ -54,7 +54,8 @@ public class Event implements Serializable {
 	private String referenceNumber;
 	private URL discoveryUrl;
 	private String statusCheckId;
-	private String cId;
+
+	
 
 	/**
 	 * Default constructor
@@ -321,12 +322,12 @@ public class Event implements Serializable {
 	public void setStatusCheckId(String statusCheckId) {
 		this.statusCheckId = statusCheckId;
 	}
-	public String getCid() {
-		return statusCheckId;
+	public List<Attach> getAttachments() {
+		return attachments;
 	}
 
-	public void setCid(String cId) {
-		this.cId = cId;
+	public void setAttachments(List<Attach> attachments) {
+		this.attachments = attachments;
 	}
 
 	@Override
@@ -336,6 +337,6 @@ public class Event implements Serializable {
 				+ ", opportunityAmt=" + opportunityAmt + ", responseDeadline=" + responseDeadline + ", description="
 				+ description + ", buyerName=" + buyerName + ", buyerAnid=" + buyerAnid + ", awardDate=" + awardDate
 				+ ", startDate=" + startDate + ", referenceNumber=" + referenceNumber + ", discoveryUrl=" + discoveryUrl
-				+ ", statusCheckId=" + statusCheckId +", cId=" + cId +"]";
+				+ ", statusCheckId=" + statusCheckId +", attachments=" + attachments +"]";
 	}
 }

@@ -131,14 +131,13 @@ public class PublicSourcingEventsProcessor {
 	}
 	private void attachEvent(EventDto eventDto) throws UnsuccessfulOperationException {
 		
-		if(eventDto.getCId() != null)
-		{
-		logger.debug(DEBUG_ATTACH_EVENT_WITH_EVENT_ID, eventDto.getEventId(), eventDto.getCId());
-
-		publicSourcingFacade.attachEvent(eventDto.getEventId(), eventDto.getCId());
-
-		logger.debug(DEBUG_ATTACH_EVENT_WITH_EVENT_ID, eventDto.getEventId(), eventDto.getCId());
-		}
+//		
+//		
+//		logger.debug(DEBUG_ATTACH_EVENT_WITH_EVENT_ID, eventDto.getEventId(), eventDto.getCId());
+//
+//		publicSourcingFacade.attachEvent(eventDto.getEventId(), eventDto.getCId());
+//
+//		logger.debug(DEBUG_ATTACH_EVENT_WITH_EVENT_ID, eventDto.getEventId(), eventDto.getCId());
 	}
 
 }

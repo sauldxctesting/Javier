@@ -26,7 +26,7 @@ public class EventDto {
 	private URL discoveryURL;
 	private String awardDate;
 	private String statusCheckId;
-	private String cId;
+	private List<AttachDto> attachments;
 
 	public String getEventId() {
 		return eventId;
@@ -116,12 +116,12 @@ public class EventDto {
 		this.discoveryURL = discoveryURL;
 	}
 	
-	public String getCId(){
-		return cId;
+	public List<AttachDto> getAttachments(){
+		return attachments;
 	}
 	
-	public void setCId(String cId){
-		this.cId = cId;
+	public void setAttachments(List<AttachDto> attachments){
+		this.attachments = attachments;
 	}
 	
 
